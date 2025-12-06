@@ -1,174 +1,128 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-4170955517335772">
-    <title>Kauê - Portfólio Pessoal</title>
-    <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4170955517335772"
-     crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kauê - Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <a href="#home" class="nav-link">Kauê</a>
-            <ul class="nav-list">
-                <li><a href="#home" class="nav-link">🏠</a></li>
-                <li><a href="#skills" class="nav-link">🧠</a></li>
-                <li><a href="#certificates" class="nav-link">🎓</a></li>
-                <li><a href="#projects" class="nav-link">🛠️</a></li>
-                <li><a href="#github-repos" class="nav-link">👨🏻‍💻</a></li>
-                <li><a href="#contact" class="nav-link">💬</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div id="particles-wrap"><canvas id="particles"></canvas></div>
 
-    <main>
-        <section id="home" class="section intro-section">
-            <h1>Oi, eu sou o Kauê 👋</h1>
-            <p>Estudante e programador Python focado em automação e desenvolvimento de ferramentas úteis.</p>
-            <div class="button-wrapper">
-                <div class="button-back-box"></div>
-                <a href="#skills" class="btn scroll-btn">Habilidades</a>
-            </div>
-        </section>
+  <aside class="sidebar" aria-label="Navegação principal">
+    <div class="sidebar-inner">
+      <div class="brand">
+        <img src="imgs/P.png" alt="Logo Kauê" class="logo" />
+        <div class="name-block">
+          <h1 class="name">Kauê L. F. Monteiro</h1>
+          <p class="role">Estudante • Desenvolvedor</p>
+        </div>
+      </div>
 
-        <section id="skills" class="section skills-section">
-            <h2>Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <span class="icon">🐍</span>
-                    <h3>Python</h3>
-                    <p>Automação, Otimização, Back-end</p>
-                </div>
-                <div class="skill-card">
-                    <span class="icon">💻</span>
-                    <h3>JavaScript</h3>
-                    <p>Web, React, Vite</p>
-                </div>
-                <div class="skill-card">
-                    <span class="icon">⚙️</span>
-                    <h3>Supabase & APIs</h3>
-                    <p>Integração e Desenvolvimento</p>
-                </div>
-                <div class="skill-card">
-                    <span class="icon">🎮</span>
-                    <h3>Game Dev</h3>
-                    <p>Curso de 2 anos</p>
-                </div>
-                <div class="skill-card">
-                    <span class="icon">🧠</span>
-                    <h3>Inglês avançado</h3>
-                    <p>Comunicação e Documentação</p>
-                </div>
-            </div>
-        </section>
+      <nav class="nav" aria-label="Seções do site">
+        <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero')">Início</a>
+        <a href="#about" onclick="event.preventDefault(); scrollToSection('about')">Sobre</a>
+        <a href="#projects" onclick="event.preventDefault(); scrollToSection('projects')">Projetos</a>
+        <a href="#skills" onclick="event.preventDefault(); scrollToSection('skills')">Skills</a>
+        <a href="#experience" onclick="event.preventDefault(); scrollToSection('experience')">Experiência</a>
+        <a href="#contact" onclick="event.preventDefault(); scrollToSection('contact')">Contato</a>
 
-        <section id="certificates" class="section certificates-section">
-            <h2>Certificados</h2>
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <h3>Introdução à Programação com Python</h3>
-                    <p>Curso da Fundação Bradesco abordando lógica de programação, estruturas de controle e sintaxe básica em Python.</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=12925432&p=9kKjaL7TtylR47Skva%252bsz8gyfC5jb9mL" target="_blank" class="btn project-btn">Ver Certificado</a>
-                    </div>
-                </div>
-                <div class="certificate-card">
-                    <h3>Introdução à Lógica de Programação</h3>
-                    <p>Curso da Fundação Bradesco com fundamentos de lógica, algoritmos e raciocínio computacional.</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=12925432&p=9kKjaL7TtylR47Skva%252bsz%252fYQmjWsZK%252b5" target="_blank" class="btn project-btn">Ver Certificado</a>
-                    </div>
-                </div>
-                <div class="certificate-card">
-                    <h3>Fundamentos de TI: Hardware e Software</h3>
-                    <p>Curso da Fundação Bradesco sobre arquitetura de computadores, componentes de hardware e sistemas operacionais.</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=12925432&p=9kKjaL7TtylOIru6LzNzNGIpW1VC5YzR" target="_blank" class="btn project-btn">Ver Certificado</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+      </nav>
 
-
-        <section id="projects" class="section projects-section">
-            <h2>Projetos</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>PDFinder</h3>
-                    <p>Achar PDFs gratuitos de forma fácil</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://mxp-c.github.io/PDF/" class="btn project-btn">Ver projeto</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Nova Notes</h3>
-                    <p>Aplicativo de anotações para PC</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://mxp-c.github.io/NovaNotes/" class="btn project-btn">Ver projeto</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Clarity</h3>
-                    <p>Plataforma inspirada no ClickUp com Supabase</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="https://github.com/MXP-C/Clarity" class="btn project-btn">Ver projeto</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="github-repos" class="section github-repos-section">
-            <h2>Meus Repositórios no GitHub</h2>
-            <button id="toggle-repos" class="btn scroll-btn">Mostrar Menos</button>
-            <div class="repos-grid">
-            </div>
-        </section>
-
-        <section id="contact" class="section contact-section">
-            <h2>Quer trocar uma ideia ou colaborar?</h2>
-            <div class="contact-buttons">
-                <div class="button-wrapper">
-                    <div class="button-back-box"></div>
-                    <a href="https://github.com/MXP-C" class="btn contact-btn">GitHub</a>
-                </div>
-                <div class="button-wrapper">
-                    <div class="button-back-box"></div>
-                    <a href="mxlsc@proton.me" class="btn contact-btn">Email</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>© Kauê — 2025</p>
-    </footer>
-
-    <div class="linux-mascot">
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Body -->
-            <path d="M50 95C70 95 85 80 85 60C85 40 70 25 50 25C30 25 15 40 15 60C15 80 30 95 50 95Z" fill="#000000"/>
-            <!-- White Belly -->
-            <path d="M50 90C65 90 75 75 75 60C75 45 65 35 50 35C35 35 25 45 25 60C25 75 35 90 50 90Z" fill="#FFFFFF"/>
-            <!-- Left Eye -->
-            <circle cx="40" cy="50" r="7" fill="#FFFFFF"/>
-            <circle class="eye-pupil" cx="40" cy="50" r="3" fill="#000000"/>
-            <!-- Right Eye -->
-            <circle cx="60" cy="50" r="7" fill="#FFFFFF"/>
-            <circle class="eye-pupil" cx="60" cy="50" r="3" fill="#000000"/>
-            <!-- Beak -->
-            <path d="M50 65L45 75L55 75L50 65Z" fill="#FFA500"/>
-        </svg>
+      <div class="sidebar-footer">
+        <a class="small-btn" href="https://github.com/kmdev-cmd" target="_blank" rel="noopener">GitHub</a>
+        <a class="small-btn" href="mailto:kmdev@example.com">Email</a>
+      </div>
     </div>
+  </aside>
 
-    <script src="script.js"></script>
+  <main class="main">
+    <section id="hero" class="hero">
+      <div class="hero-inner">
+        <h2 class="eyebrow">Olá, eu sou</h2>
+        <h1 class="hero-title">Kauê</h1>
+        <p class="hero-sub">
+          Estudante e desenvolvedor autodidata. Foco em Python, web e automações — crio ferramentas que resolvem problemas reais.
+        </p>
+        <div class="hero-ctas">
+          <a class="cta" href="#projects">Ver Projetos</a>
+          <button class="ghost" onclick="scrollToSection('contact')">Falar comigo</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h3 class="section-title">Sobre Mim</h3>
+      <p class="section-text">
+        Tenho 16 anos, sou do 2º ano do ensino médio e programo desde cedo. Trabalho com Python, frontend e automações, e já desenvolvi apps e ferramentas usadas por colegas.
+      </p>
+    </section>
+
+    <section id="projects" class="section">
+      <h3 class="section-title">Projetos em Destaque</h3>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h4 class="project-name">Nova Notes</h4>
+          <p class="project-desc">App de anotações para desktop com markdown e persistência local.</p>
+          <div class="project-tech">Python</div>
+          <a href="https://github.com/kmdev-cmd/NovaNotes" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
+        </article>
+
+        <article class="project-card">
+          <h4 class="project-name">Clarity</h4>
+          <p class="project-desc">Painel estilo ClickUp com Supabase para gerenciamento e organização.</p>
+          <div class="project-tech">React • Vite • Tailwind • Supabase</div>
+          <a href="https://github.com/kmdev-cmd/Clarity" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
+        </article>
+
+        <article class="project-card">
+          <h4 class="project-name">PDFinder</h4>
+          <p class="project-desc">Busca otimizada para encontrar PDFs rapidamente.</p>
+          <div class="project-tech">HTML • CSS • JavaScript</div>
+          <a href="https://kmdev-cmd.github.io/PDF/" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h3 class="section-title">Tecnologias</h3>
+      <div class="skills-grid">
+        <span class="skill">Python</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Supabase</span>
+        <span class="skill">HTML &amp; CSS</span>
+        <span class="skill">Linux</span>
+        <span class="skill">Git</span>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h3 class="section-title">Experiência</h3>
+      <div class="experience-grid">
+        <div class="experience-card">
+          <h4>Projetos próprios</h4>
+          <p class="company">2025 — Atual</p>
+          <p>Desenvolvimento de aplicações em Python e web; soluções usadas por colegas e pequenos grupos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <h3 class="section-title">Contato</h3>
+      <p class="section-text">Quer colaborar ou trocar uma ideia? Me manda mensagem.</p>
+      <div class="contact-grid">
+        <a class="contact-btn" href="mailto:kmdev@example.com">Email</a>
+        <a class="contact-btn" href="https://github.com/kmdev-cmd" target="_blank" rel="noopener">GitHub</a>
+        <a class="contact-btn" href="https://linkedin.com/in/kauemdev" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="contact-btn" href="https://wa.me/5513974140538" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+    <button id="topBtn" class="top-btn" aria-label="Ir para o topo" onclick="scrollToTop()">↑</button>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

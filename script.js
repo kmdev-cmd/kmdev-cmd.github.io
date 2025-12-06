@@ -1,137 +1,111 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+/* partículas — mantive igual */
+(() => {
+  const canvas = document.getElementById("particles");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d", { alpha: true });
+  let w = (canvas.width = innerWidth);
+  let h = (canvas.height = innerHeight);
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+  const config = {
+    count: Math.round(Math.max(18, (w * h) / 140000)),
+    speed: 0.2,
+    sizeMin: 0.5,
+    sizeMax: 2.6,
+    color: "rgba(124,240,255,0.06)",
+  };
 
-    // Fade-in on scroll for sections
-    const sections = document.querySelectorAll('.section');
-    const reposGrid = document.querySelector('.repos-grid'); // Declared once at a higher scope
+  const particles = [];
+  const rand = (min, max) => Math.random() * (max - min) + min;
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+  function Particle() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.r = rand(config.sizeMin, config.sizeMax);
+    this.vx = rand(-config.speed, config.speed);
+    this.vy = rand(-config.speed, config.speed);
+    this.alpha = rand(0.2, 0.6);
+  }
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing once visible
-            }
-        });
-    }, observerOptions);
+  function init() {
+    particles.length = 0;
+    for (let i = 0; i < config.count; i++) particles.push(new Particle());
+  }
 
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
+  function resize() {
+    w = canvas.width = innerWidth;
+    h = canvas.height = innerHeight;
+    init();
+  }
+  addEventListener("resize", resize);
 
-    // Fetch GitHub Repositories
-    const githubUsername = 'MXP-C'; // User's GitHub username
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (let p of particles) {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(124,240,255,${p.alpha})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
 
-    async function fetchGitHubRepos() {
-        try {
-            const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc`);
-            if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.statusText}`);
-            }
-            const repos = await response.json();
+      p.x += p.vx;
+      p.y += p.vy;
 
-            repos.forEach(repo => {
-                const repoCard = document.createElement('div');
-                repoCard.classList.add('repo-card');
-                repoCard.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <p>${repo.description || 'No description provided.'}</p>
-                    <div class="button-wrapper">
-                        <div class="button-back-box"></div>
-                        <a href="${repo.html_url}" target="_blank" class="btn project-btn">Ver Repositório</a>
-                    </div>
-                `;
-                reposGrid.appendChild(repoCard);
-            });
-        } catch (error) {
-            console.error('Failed to fetch GitHub repositories:', error);
-            if (reposGrid) { // Check if reposGrid exists before trying to modify it
-                reposGrid.innerHTML = `<p>Não foi possível carregar os repositórios. Por favor, tente novamente mais tarde.</p>`;
-            }
-        }
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+
+  /* --------- Sistema de navegação SEM SCROLL --------- */
+
+  const navLinks = document.querySelectorAll(".nav a");
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+
+  function activateSection(id) {
+    // verifica se é mobile (≤768px)
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+      // PC: ativa/desativa sections
+      navLinks.forEach((l) => l.classList.remove("active"));
+      sections.forEach((s) => s.classList.remove("active"));
+
+      // ativa nav
+      const activeLink = document.querySelector(`.nav a[href="#${id}"]`);
+      if (activeLink) activeLink.classList.add("active");
+
+      // ativa section
+      const activeSection = document.getElementById(id);
+      if (activeSection) activeSection.classList.add("active");
     }
 
-    fetchGitHubRepos();
-
-    // Collapsible GitHub Repositories section
-    const toggleReposButton = document.getElementById('toggle-repos');
-
-    // Initially collapse the section if there are many repos, or keep expanded
-    // For now, let's assume it starts expanded and can be collapsed.
-    // If you want it to start collapsed, add 'reposGrid.classList.add('collapsed');' here
-    // and change button text to 'Mostrar Mais'.
-
-    if (toggleReposButton && reposGrid) { // Ensure elements exist
-        const toggleButtonWrapper = toggleReposButton.closest('.button-wrapper');
-
-        // Set initial state: if reposGrid is collapsed, button is in inactive state
-        // If reposGrid is not collapsed, button is in active state
-        if (reposGrid.classList.contains('collapsed')) {
-            toggleReposButton.textContent = 'Mostrar Mais';
-            // No class needed for inactive state, as it's the default hover state
-        } else {
-            toggleReposButton.textContent = 'Mostrar Menos';
-            if (toggleButtonWrapper) {
-                toggleButtonWrapper.classList.add('button-active-state'); // Apply active state
-            }
-        }
-
-        toggleReposButton.addEventListener('click', () => {
-            reposGrid.classList.toggle('collapsed');
-            if (reposGrid.classList.contains('collapsed')) {
-                toggleReposButton.textContent = 'Mostrar Mais';
-                if (toggleButtonWrapper) {
-                    toggleButtonWrapper.classList.remove('button-active-state'); // Remove active state
-                }
-            } else {
-                toggleReposButton.textContent = 'Mostrar Menos';
-                if (toggleButtonWrapper) {
-                    toggleButtonWrapper.classList.add('button-active-state'); // Apply active state
-                }
-            }
-        });
+    // sempre faz scroll suave
+    const activeSection = document.getElementById(id);
+    if (activeSection) {
+      const top = activeSection.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: "smooth" });
     }
+  }
 
-    // Linux mascot eyes follow mouse
-    const mascot = document.querySelector('.linux-mascot');
-    const pupils = document.querySelectorAll('.eye-pupil');
-
-    document.addEventListener('mousemove', (e) => {
-        if (!mascot) return;
-
-        const mascotRect = mascot.getBoundingClientRect();
-        const mascotCenterX = mascotRect.left + mascotRect.width / 2;
-        const mascotCenterY = mascotRect.top + mascotRect.height / 2;
-
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        pupils.forEach(pupil => {
-            const pupilRect = pupil.getBoundingClientRect();
-            const pupilCenterX = pupilRect.left + pupilRect.width / 2;
-            const pupilCenterY = pupilRect.top + pupilRect.height / 2;
-
-            const angle = Math.atan2(mouseY - pupilCenterY, mouseX - pupilCenterX);
-            const distance = Math.min(pupilRect.width / 2, 5); // Limit pupil movement
-
-            const moveX = Math.cos(angle) * distance;
-            const moveY = Math.sin(angle) * distance;
-
-            pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
+  // intercepta todos os cliques
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = link.getAttribute("href").replace("#", "");
+      activateSection(id);
     });
-});
+  });
+
+  // primeira ativação
+  activateSection("hero");
+
+  /* botão de topo */
+  window.scrollToTop = () => activateSection("hero");
+
+  /* função para onclick dos links */
+  window.scrollToSection = activateSection;
+})();
