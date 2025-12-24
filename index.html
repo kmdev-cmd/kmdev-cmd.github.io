@@ -1,128 +1,238 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kauê - Portfólio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="particles-wrap"><canvas id="particles"></canvas></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kauê - Portfólio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <img src="imgs/P.png" alt="Logo Kauê" class="logo" />
+          <div class="name-block">
+            <h1 class="name">Kauê L. F. Monteiro</h1>
+            <p class="role">Estudante • Desenvolvedor</p>
+          </div>
+        </div>
 
-  <aside class="sidebar" aria-label="Navegação principal">
-    <div class="sidebar-inner">
-      <div class="brand">
-        <img src="imgs/P.png" alt="Logo Kauê" class="logo" />
-        <div class="name-block">
-          <h1 class="name">Kauê L. F. Monteiro</h1>
-          <p class="role">Estudante • Desenvolvedor</p>
+        <nav class="nav" aria-label="Seções do site">
+          <!-- seus links -->
+        </nav>
+
+        <div class="header-right">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Alternar modo escuro/claro"
+          >
+            <svg class="sun" viewBox="0 0 24 24">
+              <path
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <svg class="moon" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+
+          <div class="header-links">
+            <a
+              href="https://github.com/kmdev-cmd"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a href="mailto:kmdev.cmd@gmail.com">Email</a>
+          </div>
         </div>
       </div>
+    </header>
 
-      <nav class="nav" aria-label="Seções do site">
-        <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero')">Início</a>
-        <a href="#about" onclick="event.preventDefault(); scrollToSection('about')">Sobre</a>
-        <a href="#projects" onclick="event.preventDefault(); scrollToSection('projects')">Projetos</a>
-        <a href="#skills" onclick="event.preventDefault(); scrollToSection('skills')">Skills</a>
-        <a href="#experience" onclick="event.preventDefault(); scrollToSection('experience')">Experiência</a>
-        <a href="#contact" onclick="event.preventDefault(); scrollToSection('contact')">Contato</a>
+    <main class="main">
+      <section id="hero" class="hero">
+        <div class="hero-inner">
+          <h2 class="eyebrow">Olá, eu sou</h2>
+          <h1 class="hero-title">Kauê</h1>
+          <p class="hero-sub">
+            Estudante e desenvolvedor autodidata. Foco em Python, web e
+            automações — crio ferramentas práticas que resolvem problemas reais.
+          </p>
+          <div class="hero-ctas">
+            <a class="cta" href="#projects">Ver Projetos</a>
+            <button class="ghost" onclick="scrollToSection('contact')">
+              Falar comigo
+            </button>
+          </div>
+        </div>
+      </section>
 
-      </nav>
-
-      <div class="sidebar-footer">
-        <a class="small-btn" href="https://github.com/kmdev-cmd" target="_blank" rel="noopener">GitHub</a>
-        <a class="small-btn" href="mailto:kmdev@example.com">Email</a>
-      </div>
-    </div>
-  </aside>
-
-  <main class="main">
-    <section id="hero" class="hero">
-      <div class="hero-inner">
-        <h2 class="eyebrow">Olá, eu sou</h2>
-        <h1 class="hero-title">Kauê</h1>
-        <p class="hero-sub">
-          Estudante e desenvolvedor autodidata. Foco em Python, web e automações — crio ferramentas que resolvem problemas reais.
+      <section id="about" class="section">
+        <h3 class="section-title">Sobre Mim</h3>
+        <p class="section-text">
+          Tenho 16 anos, sou do 2º ano do ensino médio e programo desde cedo.
+          Trabalho com Python, frontend e automações, criando apps e ferramentas
+          usadas por colegas.<br /><br />
+          Migrado recentemente para
+          <strong>Garuda Linux com COSMIC desktop</strong> – ambiente eficiente
+          escrito em Rust, com tiling automático incrível e performance ótima
+          para desenvolvimento e jogos.
         </p>
-        <div class="hero-ctas">
-          <a class="cta" href="#projects">Ver Projetos</a>
-          <button class="ghost" onclick="scrollToSection('contact')">Falar comigo</button>
+      </section>
+
+      <section id="projects" class="section">
+        <h3 class="section-title">Projetos em Destaque</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <!-- Imagem removida temporariamente pra testar CSS -->
+            <h4 class="project-name">Nova Notes</h4>
+            <p class="project-desc">
+              App desktop de anotações com suporte a Markdown, organização em
+              pastas e persistência local.
+            </p>
+            <div class="project-tech">Python</div>
+            <a
+              href="https://github.com/kmdev-cmd/NovaNotes"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver no GitHub</a
+            >
+          </article>
+
+          <article class="project-card">
+            <!-- Imagem removida temporariamente pra testar CSS -->
+            <h4 class="project-name">PDFinder</h4>
+            <p class="project-desc">
+              Ferramenta web para busca inteligente de PDFs gratuitos (livros,
+              apostilas, mangás) com filtros de idioma e quantidade.
+            </p>
+            <div class="project-tech">HTML • CSS • JavaScript</div>
+            <a
+              href="https://kmdev-cmd.github.io/PDF/"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver Demo</a
+            >
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="about" class="section">
-      <h3 class="section-title">Sobre Mim</h3>
-      <p class="section-text">
-        Tenho 16 anos, sou do 2º ano do ensino médio e programo desde cedo. Trabalho com Python, frontend e automações, e já desenvolvi apps e ferramentas usadas por colegas.
-      </p>
-    </section>
-
-    <section id="projects" class="section">
-      <h3 class="section-title">Projetos em Destaque</h3>
-      <div class="projects-grid">
-        <article class="project-card">
-          <h4 class="project-name">Nova Notes</h4>
-          <p class="project-desc">App de anotações para desktop com markdown e persistência local.</p>
-          <div class="project-tech">Python</div>
-          <a href="https://github.com/kmdev-cmd/NovaNotes" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
-        </article>
-
-        <article class="project-card">
-          <h4 class="project-name">Clarity</h4>
-          <p class="project-desc">Painel estilo ClickUp com Supabase para gerenciamento e organização.</p>
-          <div class="project-tech">React • Vite • Tailwind • Supabase</div>
-          <a href="https://github.com/kmdev-cmd/Clarity" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
-        </article>
-
-        <article class="project-card">
-          <h4 class="project-name">PDFinder</h4>
-          <p class="project-desc">Busca otimizada para encontrar PDFs rapidamente.</p>
-          <div class="project-tech">HTML • CSS • JavaScript</div>
-          <a href="https://kmdev-cmd.github.io/PDF/" class="project-link" target="_blank" rel="noopener">Ver Projeto</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <h3 class="section-title">Tecnologias</h3>
-      <div class="skills-grid">
-        <span class="skill">Python</span>
-        <span class="skill">JavaScript</span>
-        <span class="skill">Node.js</span>
-        <span class="skill">Supabase</span>
-        <span class="skill">HTML &amp; CSS</span>
-        <span class="skill">Linux</span>
-        <span class="skill">Git</span>
-      </div>
-    </section>
-
-    <section id="experience" class="section">
-      <h3 class="section-title">Experiência</h3>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <h4>Projetos próprios</h4>
-          <p class="company">2025 — Atual</p>
-          <p>Desenvolvimento de aplicações em Python e web; soluções usadas por colegas e pequenos grupos.</p>
+      <section id="skills" class="section">
+        <h3 class="section-title">Tecnologias</h3>
+        <div class="skills-grid">
+          <img
+            src="https://skillicons.dev/icons?i=python&theme=dark"
+            alt="Python"
+          />
+          <img
+            src="https://skillicons.dev/icons?i=js&theme=dark"
+            alt="JavaScript"
+          />
+          <img
+            src="https://skillicons.dev/icons?i=html&theme=dark"
+            alt="HTML"
+          />
+          <img src="https://skillicons.dev/icons?i=css&theme=dark" alt="CSS" />
+          <img src="https://skillicons.dev/icons?i=git&theme=dark" alt="Git" />
+          <img
+            src="https://skillicons.dev/icons?i=github&theme=dark"
+            alt="GitHub"
+          />
+          <img
+            src="https://skillicons.dev/icons?i=linux&theme=dark"
+            alt="Linux"
+          />
+          <img
+            src="https://skillicons.dev/icons?i=supabase&theme=dark"
+            alt="Supabase"
+          />
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="section contact-section">
-      <h3 class="section-title">Contato</h3>
-      <p class="section-text">Quer colaborar ou trocar uma ideia? Me manda mensagem.</p>
-      <div class="contact-grid">
-        <a class="contact-btn" href="mailto:kmdev@example.com">Email</a>
-        <a class="contact-btn" href="https://github.com/kmdev-cmd" target="_blank" rel="noopener">GitHub</a>
-        <a class="contact-btn" href="https://linkedin.com/in/kauemdev" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="contact-btn" href="https://wa.me/5513974140538" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </section>
+      <section id="experience" class="section">
+        <h3 class="section-title">Experiência</h3>
+        <div class="experience-grid">
+          <div class="experience-card">
+            <h4>Desenvolvedor Independente</h4>
+            <p class="company">2025 — Atual</p>
+            <p>
+              Crio projetos pessoais em Python e web, incluindo automações e
+              ferramentas usadas por colegas. Foco em soluções práticas que
+              economizam tempo em tarefas repetitivas.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <button id="topBtn" class="top-btn" aria-label="Ir para o topo" onclick="scrollToTop()">↑</button>
-  </main>
+      <section id="contact" class="section contact-section">
+        <h3 class="section-title">Contato</h3>
+        <p class="section-text">
+          Quer colaborar, trocar ideia ou só bater papo sobre tech? Me manda
+          mensagem!
+        </p>
+        <div class="contact-grid">
+          <a class="contact-btn" href="mailto:kmdev.cmd@gmail.com">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="currentColor"
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+            Email
+          </a>
+          <a
+            class="contact-btn"
+            href="https://github.com/kmdev-cmd"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="currentColor"
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.931.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            GitHub
+          </a>
+          <a
+            class="contact-btn"
+            href="https://roadmap.sh/u/kmdev"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="currentColor"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+              />
+            </svg>
+            Roadmap.sh
+          </a>
+          <a
+            class="contact-btn"
+            href="https://wa.me/5513974140538"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="currentColor"
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.148-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.278-3.95.994 1.005-3.88-.232-.332a9.88 9.88 0 01-1.416-5.013c0-5.451 4.438-9.889 9.889-9.889 2.637 0 5.112 1.027 6.974 2.891 1.862 1.829 2.891 4.211 2.891 6.974-.001 5.451-4.439 9.889-9.89 9.889m8.413-17.843C19.538 4.014 16.171 2 12 2 6.48 2 2 6.48 2 12c0 2.087.536 4.067 1.489 5.826l-1.637 6.336 6.483-1.7C10.13 21.519 11.102 22 12 22c5.52 0 10-4.48 10-10 0-2.684-1.063-5.195-2.993-7.077z"
+              />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
