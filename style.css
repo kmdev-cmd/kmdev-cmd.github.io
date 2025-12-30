@@ -1,108 +1,54 @@
 :root {
   --bg: #ffffff;
-  --text: #000000;
+  --text: #111827;
+  --muted: #64748b;
   --accent: #0066ff;
-  --muted: #666666;
-  --border: #e0e0e0;
-  --card-bg: #f9f9f9;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --radius: 8px; /* <--- adiciona isso */
-  --max-w: 1100px; /* <--- e isso */
+  --border: rgba(0, 0, 0, 0.08);
+  --card-bg: #ffffff;
+  --max-w: 1000px;
+  --radius: 16px;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f172a;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --border: #334155;
-    --card-bg: #1e293b;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    --radius: 8px; /* <--- adiciona isso */
-    --max-w: 1100px; /* <--- e isso */
-  }
+.dark {
+  --bg: #030712;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: #0f172a;
+  --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg);
   color: var(--text);
-  transition: background 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  transition: background 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* Aumentei sombras e hovers pra ficar menos "sem graça" */
-.project-card,
-.experience-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover,
-.experience-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-}
-
-/* Toggle button */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: var(--text);
-  transition: opacity 0.3s ease;
-}
-
-.theme-toggle .moon {
-  opacity: 0;
-}
-
-.dark .theme-toggle .sun {
-  opacity: 0;
-}
-.dark .theme-toggle .moon {
-  opacity: 1;
-}
-
-/* Skills icons adaptam ao modo */
-.skills-grid img {
-  filter: brightness(1);
-}
-
-body.dark .skills-grid img {
-  filter: brightness(1.2);
-}
-
-/* resto do seu CSS completo aqui (header, hero, etc.) + as regras novas anteriores */
-/* HEADER */
+/* HEADER GLASSMORPISM */
 .header {
   position: sticky;
   top: 0;
-  background: var(--bg);
+  z-index: 1000;
+  background: rgba(var(--bg-rgb), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  z-index: 10;
 }
 
 .header-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,280 +59,362 @@ body.dark .skills-grid img {
   gap: 12px;
   align-items: center;
 }
-
 .logo {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  object-fit: cover;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   border: 1px solid var(--border);
 }
-
 .name {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0;
-}
-
-.role {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 0;
-}
-
-.nav {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  transition: color 0.2s ease;
+}
+.role {
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
-.nav a:hover {
-  color: var(--accent);
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
-
 .header-links {
   display: flex;
-  gap: 15px;
+  gap: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
-
 .header-links a {
-  color: var(--muted);
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s ease;
+  color: var(--muted);
+  transition: color 0.2s;
 }
-
 .header-links a:hover {
   color: var(--accent);
 }
 
-/* MAIN */
-.main {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
 /* HERO */
 .hero {
-  padding: 60px 0;
-  text-align: center;
-}
-
-.hero-inner {
-  max-width: 600px;
+  padding: 120px 20px;
+  max-width: var(--max-w);
   margin: 0 auto;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
 }
 
 .eyebrow {
-  color: var(--muted);
-  font-size: 16px;
-  margin: 0 0 16px 0;
-  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
 }
-
 .hero-title {
-  font-size: 48px;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text);
-  line-height: 1.2;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
-
 .hero-sub {
+  font-size: 1.25rem;
   color: var(--muted);
-  font-size: 18px;
-  margin-top: 20px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+.hero-sub strong {
+  color: var(--text);
 }
 
 .hero-ctas {
   display: flex;
-  gap: 16px;
-  margin-top: 32px;
-  justify-content: center;
+  gap: 12px;
 }
-
 .cta {
   background: var(--accent);
-  color: #fff;
-  padding: 14px 24px;
-  border-radius: var(--radius);
-  font-weight: 600;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 12px;
   text-decoration: none;
-  transition: background 0.2s ease;
+  font-weight: 600;
+  transition: 0.3s;
 }
-
 .cta:hover {
-  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
 }
-
 .ghost {
   background: transparent;
   border: 1px solid var(--border);
-  padding: 12px 22px;
-  border-radius: var(--radius);
   color: var(--text);
-  cursor: pointer;
+  padding: 14px 28px;
+  border-radius: 12px;
   font-weight: 600;
-  transition: border-color 0.2s ease;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
 .ghost:hover {
-  border-color: var(--accent);
+  background: var(--border);
 }
 
+/* SECTIONS */
 .section {
-  padding: 40px 0;
+  padding: 100px 20px;
+  max-width: var(--max-w);
+  margin: 0 auto;
   border-top: 1px solid var(--border);
 }
-
 .section-title {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text);
-  margin: 0 0 16px 0;
+  margin-bottom: 2rem;
 }
-
 .section-text {
+  font-size: 1.1rem;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 600px;
+  max-width: 700px;
 }
 
-/* PROJECTS GRID */
+/* PROJECTS */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
 }
-
 .project-card {
-  background: var(--bg);
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  padding: 20px;
   border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+.project-tech {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 1rem;
+}
 .project-name {
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
-
 .project-desc {
   color: var(--muted);
-  font-size: 14px;
-  margin: 0 0 12px 0;
-  line-height: 1.5;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
-
-.project-tech {
-  font-size: 13px;
-  color: var(--accent);
-  margin-bottom: 16px;
-  font-weight: 500;
-}
-
 .project-link {
   text-decoration: none;
-  color: var(--accent);
+  color: var(--text);
   font-weight: 600;
-  font-size: 14px;
-  transition: color 0.2s ease;
+  font-size: 0.9rem;
 }
 
-.project-link:hover {
-  color: #0056b3;
-}
-
-/* CERTIFICATES, EXPERIENCE, CONTACT (seu original completo) */
-
-/* REGRAS NOVAS - ADICIONADAS NO FINAL */
-.project-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.project-img:hover {
-  transform: scale(1.02);
-}
-
+/* SKILLS */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+.skill-item {
+  background: var(--card-bg);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+.skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+.skill-item img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text);
+  fill: none;
+  stroke-width: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+.moon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-20deg) !important;
+}
+.dark .sun {
+  opacity: 0;
+}
+.dark .moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0) !important;
+}
+
+/* ANIMATION */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+  }
+  .header-links {
+    display: none;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Serviços Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  border-color: var(--accent);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* GitHub Stats */
+.github-stats {
+  border: none !important;
+  padding-top: 0 !important;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 24px;
 }
 
-.skills-grid img {
-  height: 48px;
-  transition: transform 0.2s ease;
+.stat-card {
+  height: 150px;
+  filter: grayscale(1); /* Mantém minimalista */
+  transition: 0.3s;
 }
 
-.skills-grid img:hover {
-  transform: scale(1.1);
+.stat-card:hover {
+  filter: grayscale(0);
+}
+
+/* Ajuste Dark Mode para as Stats */
+.dark .stat-card {
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) grayscale(1);
+}
+
+.dark .stat-card:hover {
+  filter: invert(1) hue-rotate(180deg) brightness(1) grayscale(0);
+}
+
+/* Destaque para o PDFinder */
+.project-card.destaque {
+  border-left: 4px solid var(--accent);
 }
 
 .contact-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
+  justify-content: center; /* Centraliza os ícones */
+  gap: 20px;
+  margin-top: 2rem;
 }
 
 .contact-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  background: var(--accent);
-  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Torna circular */
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-  font-weight: 600;
-  transition: background 0.2s ease;
 }
 
 .contact-btn:hover {
-  background: #0056b3;
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 102, 255, 0.05); /* Um brilho azul bem sutil */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .contact-btn:hover {
+  background: rgba(0, 102, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .contact-btn svg {
-  fill: white;
-  width: 20px;
-  height: 20px;
+  transition: transform 0.3s ease;
 }
 
-/* RESPONSIVE (cole todo o seu media queries aqui no final) */
-@media (max-width: 1024px) {
-  /* seu código */
-}
-@media (max-width: 768px) {
-  /* seu código */
-}
-@media (max-width: 480px) {
-  /* seu código */
+.contact-btn:hover svg {
+  transform: scale(1.1);
 }
