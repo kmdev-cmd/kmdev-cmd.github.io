@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Kauê - Portfólio</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="imgs/icon.png">
   </head>
   <body>
     <header class="header">
       <div class="header-inner">
         <div class="brand">
-          <img src="imgs/P.png" alt="Logo Kauê" class="logo" />
+          <img src="imgs/kmdevpfp.png" alt="logo" class="logo clickable-logo" id="profile-logo" />
           <div class="name-block">
             <h1 class="name">Kauê Monteiro</h1>
             <p class="role">Estudante • Desenvolvedor</p>
@@ -52,7 +53,7 @@
       <section id="hero" class="hero">
         <div class="hero-inner">
           <h2 class="eyebrow">Olá, eu sou o Kauê</h2>
-          <h1 class="hero-title">Construindo soluções com código.</h1>
+          <h1 class="hero-title">Código em: luz, câmera e ação.</h1>
           <p class="hero-sub">
             Desenvolvedor autodidata focado em <strong>Python</strong> e
             <strong>Web</strong>. Crio ferramentas práticas para problemas
@@ -68,13 +69,20 @@
       </section>
 
       <section id="about" class="section">
-        <div class="section-content">
-          <h3 class="section-title">Sobre Mim</h3>
-          <p class="section-text">
-            Tenho <strong id="dynamic-age">--</strong> anos, estudante do 2º
-            ano. Migrei para <strong>Garuda Linux (COSMIC)</strong>, focando em
-            um workflow de alto desempenho para desenvolvimento e automações.
-          </p>
+        <h3 class="section-title">Sobre Mim</h3>
+        <div class="terminal-card terminal-dots">
+          <div class="terminal-content">
+            <div class="command">$ whoami</div>
+            <div class="output">kauê</div>
+            <div class="command">$ cat about.txt</div>
+            <div class="output">
+              Tenho <span class="highlight" id="dynamic-age">--</span> anos, estudante do 2º ano.<br>
+              Migrei para <span class="highlight">Garuda Linux (COSMIC)</span>, focando em<br>
+              um workflow de alto desempenho para desenvolvimento e automações.
+            </div>
+            <div class="command">$ ls skills/</div>
+            <div class="output">python.js  web.html  automation.sh  linux.conf</div>
+          </div>
         </div>
       </section>
 
@@ -177,11 +185,44 @@
               <p class="project-desc">
                 Encurtador de URLs simples e funcional construído com Flask. Gera links curtos, armazena redirecionamentos e conta com interface minimalista.
               </p>
-              <a href="https://km-short.netlify.app/" class="project-link" target="_blank">
+              <a href="https://km-shortener.netlify.app/" class="project-link" target="_blank">
                 Acessar Demo →
               </a>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section id="certificates" class="section">
+        <h3 class="section-title">Certificações</h3>
+        <div class="certificates-grid">
+          <div class="certificate-card">
+            <div class="certificate-icon">🎓</div>
+            <h4>Python Developer</h4>
+            <p>Certificação de desenvolvedor Python pela plataforma Sololearn</p>
+            <div class="certificate-links">
+              <button class="certificate-link certificate-btn" data-certificate="python">Ver Certificado →</button>
+            </div>
+            <span class="certificate-date">2026</span>
+          </div>
+          <div class="certificate-card">
+            <div class="certificate-icon">💻</div>
+            <h4>Web Development</h4>
+            <p>Curso completo de desenvolvimento web front-end e back-end</p>
+            <div class="certificate-links">
+              <button class="certificate-link certificate-btn" data-certificate="web">Ver Certificado →</button>
+            </div>
+            <span class="certificate-date">2026</span>
+          </div>
+          <div class="certificate-card">
+            <div class="certificate-icon">🗄️</div>
+            <h4>Banco de Dados</h4>
+            <p>Certificação em SQL e PostgreSQL para desenvolvimento</p>
+            <div class="certificate-links">
+              <button class="certificate-link certificate-btn" data-certificate="database">Ver Certificado →</button>
+            </div>
+            <span class="certificate-date">2024</span>
+          </div>
         </div>
       </section>
 
@@ -326,6 +367,21 @@
         </div>
       </section>
     </main>
+
+    <!-- Modal do Certificado -->
+    <div id="certificate-modal" class="certificate-modal">
+      <div class="certificate-modal-content">
+        <button class="certificate-modal-close" id="certificate-modal-close">&times;</button>
+        <div class="certificate-modal-body">
+          <img id="certificate-image" src="" alt="Certificado" class="certificate-modal-image">
+        </div>
+      </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 20px; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 60px;">
+      <p>Personagem <strong>Ryo Yamada</strong> por <strong>Bocchi the Rock</strong> © 2022 Kessoku Band</p>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
