@@ -98,10 +98,10 @@
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.size = Math.random() * 3 + 1;
-      this.speedX = Math.random() * 2 - 1;
-      this.speedY = Math.random() * 2 - 1;
-      this.color = `rgba(30, 64, 175, ${Math.random() * 0.5 + 0.2})`;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = Math.random() * 1.5 - 0.75;
+      this.speedY = Math.random() * 1.5 - 0.75;
+      this.color = `rgba(255, 107, 53, ${Math.random() * 0.3 + 0.1})`;
     }
 
     update() {
@@ -124,7 +124,7 @@
     particles = [];
     // Reduce particle count on mobile devices
     const isMobile = window.innerWidth <= 768;
-    const particleCount = isMobile ? 20 : 50;
+    const particleCount = isMobile ? 15 : 30;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
@@ -147,7 +147,7 @@
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 100) {
-          ctx.strokeStyle = `rgba(30, 64, 175, ${(100 - distance) / 100 * 0.3})`;
+          ctx.strokeStyle = `rgba(255, 107, 53, ${(100 - distance) / 100 * 0.3})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particle.x, particle.y);
@@ -163,7 +163,7 @@
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 150) {
-          ctx.strokeStyle = `rgba(30, 64, 175, ${(150 - distance) / 150 * 0.5})`;
+          ctx.strokeStyle = `rgba(255, 107, 53, ${(150 - distance) / 150 * 0.5})`;
           ctx.lineWidth = 2;
           ctx.beginPath();
           ctx.moveTo(particle.x, particle.y);
